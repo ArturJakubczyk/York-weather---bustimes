@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>York Weather &amp; Uni Buses</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <h1>York Weather <span>&amp; Uni Buses</span></h1>
+      <nav>
+        <a href="#forecast">Forecast</a>
+        <a href="#rain-map">Rain map</a>
+        <a href="#buses">Buses</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section id="now" class="card now">
+      <p class="muted">Loading the current weather…</p>
+    </section>
+
+    <section id="forecast">
+      <h2>7-day forecast</h2>
+      <p class="muted small">Pick a day to see its hour-by-hour forecast.</p>
+      <div id="days" class="days"></div>
+
+      <div class="card">
+        <h3 id="hourly-title">Hour by hour</h3>
+        <div class="table-scroll">
+          <table class="hourly">
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Weather</th>
+                <th>Temp</th>
+                <th>Feels like</th>
+                <th>Rain chance</th>
+                <th>Rain</th>
+                <th>Wind</th>
+              </tr>
+            </thead>
+            <tbody id="hourly-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="rain-map">
+      <h2>Rain radar</h2>
+      <p class="muted small">Rain over the last two hours, moving towards now. Brighter colours mean heavier rain.</p>
+      <div class="card map-card">
+        <div id="map"></div>
+        <div class="map-controls">
+          <button id="radar-play" type="button">Pause</button>
+          <input id="radar-slider" type="range" min="0" max="0" value="0" aria-label="Radar time">
+          <span id="radar-time" class="radar-time">--:--</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="buses">
+      <h2>University buses: U1, U2, U3</h2>
+      <p class="muted small">Live First York times. Updates every 30 seconds.</p>
+
+      <div class="card">
+        <div class="bus-controls">
+          <label>
+            <span>Stop</span>
+            <select id="stop-select">
+              {% for stop in stops %}
+              <option value="{{ stop.id }}">{{ stop.name }} ({{ stop.direction }})</option>
+              {% endfor %}
+            </select>
+          </label>
+          <div class="route-filter" role="group" aria-label="Show routes">
+            <button type="button" class="chip on" data-route="U1">U1</button>
+            <button type="button" class="chip on" data-route="U2">U2</button>
+            <button type="button" class="chip on" data-route="U3">U3</button>
+          </div>
+        </div>
+
+        <div class="table-scroll">
+          <table class="buses">
+            <thead>
+              <tr>
+                <th>Bus</th>
+                <th>To</th>
+                <th>Timetabled</th>
+                <th>Expected</th>
+                <th>Due in</th>
+                <th>Delay</th>
+              </tr>
+            </thead>
+            <tbody id="bus-body">
+              <tr><td colspan="6" class="muted">Loading bus times…</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p class="legend small">
+          <span class="badge ontime">On time</span>
+          <span class="badge late">Late</span>
+          <span class="badge early">Early</span>
+          <span class="badge sched">Timetable only</span>
+          “Timetable only” means the bus isn't tracking live yet, so the time shown is the timetabled one.
+        </p>
+        <p id="bus-updated" class="muted small"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap muted small">
+    Weather from <a href="https://open-meteo.com/">Open-Meteo</a>. Rain radar from <a href="https://www.rainviewer.com/">RainViewer</a>.
+    Bus times from <a href="https://bustimes.org/">bustimes.org</a> (First York live data).
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
