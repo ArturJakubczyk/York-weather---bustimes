@@ -21,12 +21,16 @@ A website for students in York that shows the weather forecast, a live rain map,
 - **Python** and **Flask** – the web server
 - **JavaScript, HTML and CSS** – the web page
 - **Leaflet** – the interactive map
+- **Gunicorn** and **[Render](https://render.com/)** – hosting the live website
 - [Open-Meteo](https://open-meteo.com/) – weather forecast data
 - [RainViewer](https://www.rainviewer.com/) – rain radar images
 - [bustimes.org](https://bustimes.org/) – live First York bus data
 
-# How to run it on your own computer
-You don't need to do this to try the website: just use the live link above.
+# How to use it
+Just open **[york-weather-bustimes.onrender.com](https://york-weather-bustimes.onrender.com/)** in any browser, on a computer or a phone. There is nothing to download or install, and any number of people can use it at the same time.
+
+<details>
+<summary>Running it on your own computer (optional, for developers)</summary>
 
 1. Install Python 3 and download this project.
 2. Open a terminal in the project folder and install the packages:
@@ -38,8 +42,9 @@ You don't need to do this to try the website: just use the live link above.
    ```bash
    .venv/bin/python app.py
    ```
-4. Open **http://127.0.0.1:5050** in your browser.
+4. Open **http://127.0.0.1:5050** in your browser. This address only works on the computer running the code; to share the website, use the live link above.
 
+</details>
 
 # Project structure
 - **app.py** – Python server: fetches weather and bus data

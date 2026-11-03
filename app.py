@@ -1,5 +1,6 @@
 # York weather website with live University of York bus times (U1, U2, U3)
-# Run with:  .venv/bin/python app.py   then open http://127.0.0.1:5050
+# Live website: https://york-weather-bustimes.onrender.com/
+# To run it on your own computer:  .venv/bin/python app.py   then open http://127.0.0.1:5050
 
 import time
 from datetime import datetime, timedelta
