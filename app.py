@@ -164,4 +164,5 @@ def api_buses():
 
 if __name__ == "__main__":
     # Port 5000 is used by AirPlay on macOS, so use 5050
-    app.run(debug=True, port=5050)
+    # Local testing only; on a hosting service the app is started with gunicorn instead
+    app.run(port=5050)
