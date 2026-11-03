@@ -1,6 +1,12 @@
 # York weather & Uni Buses timetable
 A website for students in York that shows the weather forecast, a live rain map, and real-time University of York bus times, all on one page.
 
+## 🌐 Live website: **[york-weather-bustimes.onrender.com](https://york-weather-bustimes.onrender.com/)**
+
+[![Open the live website](https://img.shields.io/badge/Live%20website-Open%20it%20here-2ea44f?style=for-the-badge)](https://york-weather-bustimes.onrender.com/)
+
+> The site is hosted on Render's free plan, so if nobody has visited it recently it can take around 30 seconds to wake up on the first load.
+
 # Features
 - **Current weather** – temperature, feels like, wind, chance of rain and sunset time
 - **7-day forecast** – click any day to see its hour-by-hour forecast
@@ -19,7 +25,9 @@ A website for students in York that shows the weather forecast, a live rain map,
 - [RainViewer](https://www.rainviewer.com/) – rain radar images
 - [bustimes.org](https://bustimes.org/) – live First York bus data
 
-# How to run it
+# How to run it on your own computer
+You don't need to do this to try the website: just use the live link above.
+
 1. Install Python 3 and download this project.
 2. Open a terminal in the project folder and install the packages:
    ```bash
